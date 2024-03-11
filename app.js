@@ -4,6 +4,7 @@ dotenv.config();
 
 import "express-async-errors";
 import express from "express";
+import cors from "cors";
 import morgan from "morgan";
 import AuthRouter from "./routes/AuthRouter.js";
 import UserRouter from "./routes/UserRouter.js";
@@ -40,6 +41,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // Middleware
 app.use(express.json()); //Have access to the json data in the req.body
 app.use(cookieParser(process.env.JWT_SECRET));
+app.use(cors());
 // Public folder middlemware
 app.use(express.static(path.resolve(__dirname, "./public")));
 
